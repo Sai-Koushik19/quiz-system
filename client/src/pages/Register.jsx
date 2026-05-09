@@ -42,73 +42,103 @@ function Register() {
 
     };
 
-    return (
+   return (
 
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 via-white to-green-200 px-4">
 
-            <div className="bg-white p-8 rounded-xl shadow-lg w-96">
-        <h1 className="text-5xl font-extrabold text-center text-blue-700 mb-2">
-         QuizVerse
-        </h1>
-                <h1 className="text-3xl font-bold text-center mb-6">
-                    Register
+        <div className="w-full max-w-md bg-white/90 backdrop-blur-md shadow-2xl rounded-3xl p-8 border border-gray-200">
+
+            <div className="text-center mb-8">
+
+                <h1 className="text-5xl font-extrabold text-green-700 tracking-wide">
+                    QuizVerse
                 </h1>
 
-                <form
-                    onSubmit={handleSubmit}
-                    className="space-y-4"
-                >
-
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Enter name"
-                        className="w-full border p-3 rounded-lg"
-                        onChange={handleChange}
-                    />
-
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Enter email"
-                        className="w-full border p-3 rounded-lg"
-                        onChange={handleChange}
-                    />
-
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Enter password"
-                        className="w-full border p-3 rounded-lg"
-                        onChange={handleChange}
-                    />
-
-                    <button
-                        className="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700"
-                    >
-                        Register
-                    </button>
-
-                </form>
-
-                <p className="text-center mt-4">
-
-                    Already have an account?
-
-                    <Link
-                        to="/"
-                        className="text-blue-600 ml-2"
-                    >
-                        Login
-                    </Link>
-
+                <p className="text-gray-500 mt-2">
+                    Create your account and start playing
                 </p>
 
             </div>
 
+            <form
+                onSubmit={handleSubmit}
+                className="space-y-5"
+            >
+
+                <div>
+
+                    <label className="block text-gray-700 mb-2 font-medium">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter your name"
+                        className="w-full border border-gray-300 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div>
+
+                    <label className="block text-gray-700 mb-2 font-medium">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        className="w-full border border-gray-300 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <div>
+
+                    <label className="block text-gray-700 mb-2 font-medium">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        className="w-full border border-gray-300 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+                        onChange={handleChange}
+                    />
+
+                </div>
+
+                <button
+                    className="w-full bg-green-600 text-white p-3 rounded-xl font-semibold hover:bg-green-700 hover:scale-[1.02] transition duration-300 shadow-md"
+                >
+                    Register
+                </button>
+
+            </form>
+
+            <p className="text-center text-gray-600 mt-6">
+
+                Already have an account?
+
+                <Link
+                    to="/"
+                    className="text-green-600 font-semibold ml-2 hover:underline"
+                >
+                    Login
+                </Link>
+
+            </p>
+
         </div>
 
-    )
+    </div>
+
+)
 
 }
 
