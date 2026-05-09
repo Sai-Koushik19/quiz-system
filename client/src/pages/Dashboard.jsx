@@ -116,7 +116,7 @@ function Dashboard() {
         </button>
 
         </Link>
-        <Link to="/history">
+       <Link to={`/history/${quiz._id}`}>
 
     <button
         className="bg-purple-600 text-white px-6 py-3 rounded-lg"

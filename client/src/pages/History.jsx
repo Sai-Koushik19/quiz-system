@@ -4,7 +4,8 @@ import {
 } from "react";
 
 import {
-    Link
+    Link,
+    useParams
 } from "react-router-dom";
 
 import API from "../services/api";
@@ -13,6 +14,8 @@ function History() {
 
     const [results, setResults] =
         useState([]);
+
+    const { quizId } = useParams();
 
     useEffect(() => {
 
@@ -40,7 +43,13 @@ function History() {
                     }
                 );
 
-            setResults(res.data);
+            const filteredResults =
+                res.data.filter(
+                    (result) =>
+                        result.quizId?._id?.toString() === quizId
+                );
+
+            setResults(filteredResults);
 
         } catch (error) {
 
@@ -93,53 +102,70 @@ function History() {
                     <tbody>
 
                         {
-                            results.map(
-                                (result) => (
+                            results.length > 0 ? (
 
-                                <tr
-                                    key={result._id}
-                                    className="border-b"
-                                >
+                                results.map(
+                                    (result) => (
 
-                                    <td className="p-4">
-                                        {
-                                            result.quizId?.title
-                                        }
-                                    </td>
+                                    <tr
+                                        key={result._id}
+                                        className="border-b"
+                                    >
 
-                                    <td className="p-4">
-                                        {
-                                            result.quizId?.category
-                                        }
-                                    </td>
+                                        <td className="p-4">
+                                            {
+                                                result.quizId?.title
+                                            }
+                                        </td>
 
-                                    <td className="p-4">
-                                        {
-                                            result.score
-                                        }
-                                        /
-                                        {
-                                            result.totalQuestions
-                                        }
-                                    </td>
+                                        <td className="p-4">
+                                            {
+                                                result.quizId?.category
+                                            }
+                                        </td>
 
-                                    <td className="p-4">
-                                        {
-                                            result.percentage
-                                        }%
-                                    </td>
+                                        <td className="p-4">
+                                            {
+                                                result.score
+                                            }
+                                            /
+                                            {
+                                                result.totalQuestions
+                                            }
+                                        </td>
 
-                                    <td className="p-4">
-                                        {
-                                            new Date(
-                                                result.createdAt
-                                            ).toLocaleDateString()
-                                        }
+                                        <td className="p-4">
+                                            {
+                                                result.percentage
+                                            }%
+                                        </td>
+
+                                        <td className="p-4">
+                                            {
+                                                new Date(
+                                                    result.createdAt
+                                                ).toLocaleDateString()
+                                            }
+                                        </td>
+
+                                    </tr>
+
+                                ))
+
+                            ) : (
+
+                                <tr>
+
+                                    <td
+                                        colSpan="5"
+                                        className="text-center p-6 text-gray-500"
+                                    >
+                                        No history found for this quiz
                                     </td>
 
                                 </tr>
 
-                            ))
+                            )
                         }
 
                     </tbody>
@@ -153,7 +179,7 @@ function History() {
                 <Link to="/dashboard">
 
                     <button
-                        className="bg-blue-600 text-white px-8 py-3 rounded-lg"
+                        className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700"
                     >
                         Back
                     </button>

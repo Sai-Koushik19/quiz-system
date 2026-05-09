@@ -32,7 +32,7 @@ function App() {
           element={<Register />}
         />
 <Route
-    path="/history"
+    path="/history/:quizId"
     element={
         <ProtectedRoute>
             <History />
